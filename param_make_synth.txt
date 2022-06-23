@@ -1,0 +1,53 @@
+### PARAMETER FILE FOR MCMC FITTING CODE
+### KEYWORDS DO NOT NEED TO BE IN ORDER
+### BUT THEY MUST RETAIN THEIR NAMES
+### ARRAYS MUST NOT HAVE SPACES
+
+### SETUP ###
+models btsettl				#Which set of model spectra to use
+res 1200 					#spectral resolution
+tmin 2900 					#minimum temperature spectrum to load (K)
+tmax 4600 					#maximum temperature spectrum to load (K)
+lgmin 4.5					#minimum log(g) value to load
+lgmax 5.5				#maximum log(g) value to load
+specmin 3000 				#minimum wavelength for spectral read-in (A)
+specmax 30000				#maximum wavelength for spectral read-in (A)
+
+
+### DATA INFORMATION ###
+filename Data/synth_spec_3850_3600.txt   #path from 'Results' to desired file
+spmin 0.55 					#minimum spectrum in um
+spmax 0.9					#max spectrum in um
+
+
+### PHOTOMETRY INFORMATION ###
+cmag [0.9,0.807,0.821]	#contrast magnitudes for the system 
+cerr [0.01,0.01,0.01]			#contrast error for the system
+cfilt ['880',J','K']			#contrast filters for the system
+
+pmag [16,14,13,11.352,10.675,13.598] 	#unresolved magnitudes real pmag = [11.35166748 10.67471663 13.59765776]
+perr [0.1,0.1,0.1,0.1,0.05,0.05,0.05]		#unresolved mag error
+pfilt ['sdss,g','sdss,r','sdss,i','sdss,z','j','h','k']			#unresolved mag filters
+
+plx 0.01				#system parallax in arcsec real pi = 8e-3
+plx_err 0.001			#parallax error in arcsec
+dist_fit False
+
+av 0.05					#extinction to system in mag real av 0.2
+av_err 0.05 				#extinction error in mag
+
+### FIT PARAMETERS ###
+# INITIAL MCMC #
+nwalk 112 					#number of walkers to run
+nstep 200					#number of steps to run
+
+# emcee PARAMETERS #
+nspec 2						#number of stars
+ndust 0						#number of disk components
+
+nburn 401					#number of steps for burn-in
+nsteps 201					#number of steps to sample
+
+## PREVIOUSLY MEASURED VALUES ##
+# IF THERE ARE NONE SET THE VALUES TO ZERO #
+real_values [3850,3600,4.76,4.9,0,0.756]	#0.5,0.4,8.e-3]
